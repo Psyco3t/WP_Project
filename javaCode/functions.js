@@ -1,5 +1,30 @@
 window.addEventListener('load', init);
 
+function checkSelect()
+{
+    var form=document.getElementById('selectForm');
+    var Select=document.getElementById('select').value;
+    console.log('ass');
+    console.log(Select);
+    if (Select=='default')
+    {
+        form.addEventListener('submit', function (e) {
+            // prevent the form from submitting
+            e.preventDefault();
+
+        });
+
+        document.getElementById('1').innerHTML="Please select a table!";
+        //borders.style.border="red solid 2px";
+        document.getElementById("select").style.border = "thin solid red";
+    }
+    else
+    {
+        document.getElementById('1').innerHTML="";
+        document.getElementById("select").style.border = "";
+    }
+}
+
 function registerSuccess()
 {
     alert("Registration successfull check your email");
@@ -26,21 +51,6 @@ function emailSent()
     alert("Check Your Emails!")
 }
 
-function init() {
-    document.getElementById('fl').addEventListener('click', function (e) {
-        let forgetForm = document.getElementById('forget');
-
-        if (forgetForm.style.display === "none") {
-            forgetForm.style.display = "block";
-        } else {
-            forgetForm.style.display = "none";
-        }
-
-        e.preventDefault();
-    });
-
-}
-
 function loginSuccess()
 {
     alert("Login success");
@@ -64,4 +74,40 @@ function loggedOut()
 {
     document.getElementById('logout').style.display='block';
     document.getElementById('register').style.display='block';
+}
+
+function checkName()
+{
+    var name=document.getElementById('newTable').value;
+    var form=document.getElementById('selectForm');
+    if(name.length!=0)
+    {
+        document.getElementById('2').innerHTML="";
+        document.getElementById("newTable").style.border = "";
+    }
+    else
+    {
+        form.addEventListener('submit', function (e) {
+            // prevent the form from submitting
+            e.preventDefault();
+
+        });
+        document.getElementById('2').innerHTML="Enter a longer name for a table";
+        document.getElementById("newTable").style.border = "thin solid red";
+    }
+}
+
+function init() {
+    document.getElementById('fl').addEventListener('click', function (e) {
+        let forgetForm = document.getElementById('forget');
+
+        if (forgetForm.style.display === "none") {
+            forgetForm.style.display = "block";
+        } else {
+            forgetForm.style.display = "none";
+        }
+
+        e.preventDefault();
+    });
+
 }

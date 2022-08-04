@@ -15,7 +15,7 @@ if (ini_get("session.use_cookies")) {
 }
 
 session_destroy();
-
+echo'<script>alert("Successfully logged out")</script>';
 
 redirection("../HTML/index.php");
 

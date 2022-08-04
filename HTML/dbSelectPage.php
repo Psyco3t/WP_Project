@@ -1,6 +1,11 @@
 <?php
 session_start();
+require '../PHP/config.php';
+$user=$_SESSION['username'];
 
+$selectQuery="SELECT * FROM tablename WHERE username='$user'";
+
+$selectExec=mysqli_query($link,$selectQuery);
 ?>
 
 <!DOCTYPE html>
@@ -9,58 +14,34 @@ session_start();
     <meta charset="UTF-8">
     <title>Select/Create</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script src="../javaCode/functions.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="../javaCode/functions.js" type="text/javascript"></script>
 
 </head>
 <body>
 <div class="col bg-light p-3">
-    <form action="../PHP/login.php" method="post" style="margin-left: 800px; margin-right: 800px; margin-top: 150px">
-        <h1>Login</h1>
-        <div class="form-group">
-            <label for="loginUsername">Username</label>
-            <input type="text" class="form-control" id="loginUsername"
-                   placeholder="Enter username" name="username">
+    <form action="../PHP/select.php" method="post" style="margin-left: 800px; margin-right: 800px; margin-top: 150px; width: 20%" id="selectForm">
+        <h1>Select a table</h1>
+        <div class="form-group" style="margin: auto">
+        <select class="custom-select custom-select-lg mb-3" id="select" name="tables">
+            <option selected disabled value="default">Select</option>
+            <?php while($table=mysqli_fetch_array($selectExec)):;?>
+            <option value="<?php echo $table['budgetTableName']; ?>"> <?php echo $table['budgetTableName']; ?></option>
+            <?php $_SESSION['selectedTable']=$table['budgetTableName'];
+            endwhile;?>
+        </select>
+            <p id="1" style="color: red"></p>
         </div>
-        <div class="form-group">
-            <label for="loginPassword">Password</label>
-            <input type="password" class="form-control" id="loginPassword" placeholder="Password"
-                   name="password">
+        <h3>Or create a new one</h3>
+        <div class="form-group" style="margin: auto">
+            <label for="newTable">TableName</label>
+            <input type="text" class="form-control" id="newTable" placeholder="Enter table name" name="newTable">
+            <p id="2" style="color: red"></p>
         </div>
-        <input type="hidden" name="action" value="login">
-        <button type="submit" class="btn btn-primary" onsubmit="loginSuccess()" onclick="loginCheck()">Login</button><br>
-
-        <?php
-        require '../PHP/config.php';
-        $l = 0;
-
-        if (isset($_GET["l"]) and is_numeric($_GET['l'])) {
-            $l = (int)$_GET["l"];
-
-            if (array_key_exists($l, $messages)) {
-                echo '
-                    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
-                        '.$messages[$l].'
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    ';
-            }
-        }
-        ?>
-
-        <a href="#" id="fl">Forgot your password?</a>
-    </form>
-    <form action="../PHP/reset.php" method="post" name="forget" id="forget" style="display:none; width: 20%;margin-left: 40%">
-        <div class="form-group">
-            <label for="forgetEmail">E-mail</label>
-            <input type="email" class="form-control" id="forgetEmail" placeholder="Enter your e-mail address"
-                   name="email">
-        </div>
-        <input type="hidden" name="action" value="forget">
-        <button type="submit" class="btn btn-primary" onsubmit="emailSent(); resetEmailCheck()" onclick="emailSent()">Send Email</button>
+        <br>
+        <button type="submit" class="btn btn-primary" name="continueBtn" onclick="checkSelect();" value="Continue">Continue</button>
+        <button type="submit" class="btn btn-primary" style="margin-left: 120px" name="createBtn" onclick="checkName()" value="Create">Create</button>
     </form>
 </body>
 </html>

@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="col bg-light p-3">
-    <form action="../PHP/login.php" method="post" style="margin-left: 800px; margin-right: 800px; margin-top: 150px">
+    <form action="../PHP/login.php" method="post" style="margin-left: 800px; margin-right: 800px; margin-top: 150px; width: 20%;">
         <h1>Login</h1>
         <div class="form-group">
             <label for="loginUsername">Username</label>
