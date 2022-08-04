@@ -230,3 +230,25 @@ function logInfo($browser,$ip,$link,$user)
  VALUES('$browser','$ip','$user')";
     mysqli_query($link,$query);
 }
+
+function selectQuery($line,$name,$link)
+{
+    $query="SELECT $line FROM tableinfo WHERE username='$name'";
+    return mysqli_query($link,$query);
+}
+
+function submit($date,$desc,$budget,$total,$income,$otherIncome,$tableName,$link,$id)
+{
+    $updateQuery = "
+    UPDATE tableinfo 
+    SET 
+    currentDate='$date',
+    budgetDescript='$desc',
+    budget='$budget',
+    Total='$total',
+    income='$income',
+    otherIncome='$otherIncome'
+    WHERE
+    tableName='$tableName' AND ID='$id'";
+    mysqli_query($link, $updateQuery);
+}
