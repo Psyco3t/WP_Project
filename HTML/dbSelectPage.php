@@ -20,8 +20,66 @@ $selectExec=mysqli_query($link,$selectQuery);
 
 </head>
 <body>
+<div>
+    <div style="height: 150px; background-color: brown;">
+    </div>
+    <div style="height: 20px; background-color: blue;">
+    </div>
+    <div style="height: 100px; background-color: brown; align-items: center; display: flex;">
+        <div style="padding-right: 65%;">
+
+        </div>
+        <nav style="display: flex; align-items: center; float: right;">
+            <ul style="display: flex; list-style-type: none; margin: 0 auto; gap: 2rem;">
+                <li style="text-transform: uppercase; font-weight: bold; margin: auto;">
+                    <a href="index.php" style="text-decoration: none">Home</a>
+                </li>
+                <li style="text-transform: uppercase; font-weight: bold; margin: auto;">
+                    <a href="#" style="text-decoration: none;">About</a>
+                </li>
+                <li style="text-transform: uppercase; font-weight: bold; margin: auto;">
+                    <a href="#" style="text-decoration: none">Users</a>
+                </li>
+                <li style="text-transform: uppercase; font-weight: bold; margin: auto;">
+                    <a href="loginPage.php"<?php if(isset($_SESSION['logged_in'])  && $_SESSION['logged_in'] == true){
+
+                        echo 'style="display:none;"'; }
+                    else{
+                        echo 'style="display:block;"';}?>
+
+                    >Sign In</a>
+
+                </li>
+                <li id="register" style="text-transform: uppercase; font-weight: bold; margin: auto;">
+                    <a href="registerPage.php" <?php if(isset($_SESSION['logged_in'])  && $_SESSION['logged_in'] == true){
+
+                        echo 'style="display:none;"'; }
+                    else{
+                        echo 'style="display:block;"';}?>> Register</a>
+                </li>
+                <li id="logout" style="text-transform: uppercase; font-weight: bold; margin: auto;">
+                    <a href="../PHP/logout.php" <?php if(isset($_SESSION['logged_in'])  && $_SESSION['logged_in'] == true){
+
+                        echo 'style="display:block;"'; }
+                    else{
+                        echo 'style="display:none;"';}?>> LOGOUT</a>
+                </li>
+                <li style="text-transform: uppercase; font-weight: bold; margin: auto;">
+                    <a href="../HTML/dbSelectPage.php" <?php if(isset($_SESSION['logged_in'])  && $_SESSION['logged_in'] == true){
+
+                        echo 'style="display:block;"'; }
+                    else{
+                        echo 'style="display:none;"';}?>>Select/Create Table</a>
+
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</div>
+
 <div class="col bg-light p-3">
-    <form action="../PHP/select.php" method="post" style="margin-left: 800px; margin-right: 800px; margin-top: 150px; width: 20%" id="selectForm">
+    <form action="../PHP/select.php" method="post" style="margin-left: 800px; margin-right: 800px; width: 20%" id="selectForm">
         <h1>Select a table</h1>
         <div class="form-group" style="margin: auto">
         <select class="custom-select custom-select-lg mb-3" id="select" name="tables">
@@ -40,8 +98,9 @@ $selectExec=mysqli_query($link,$selectQuery);
             <p id="2" style="color: red"></p>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary" name="continueBtn" onclick="checkSelect();" value="Continue">Continue</button>
-        <button type="submit" class="btn btn-primary" style="margin-left: 120px" name="createBtn" onclick="checkName()" value="Create">Create</button>
+        <button type="submit" class="btn btn-secondary" name="deleteBtn" value="Delete">Delete</button>
+        <button type="submit" class="btn btn-primary" style="margin-left: 50px" name="continueBtn" onclick="checkSelect();" value="Continue">Continue</button>
+        <button type="submit" class="btn btn-primary" name="createBtn" onclick="checkName()" value="Create">Create</button>
     </form>
 </body>
 </html>
