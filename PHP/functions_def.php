@@ -24,7 +24,7 @@ function checkUserLogin($username, $enteredPassword)
 {
     global $link;
 
-    $sql = "SELECT id, password FROM users 
+    $sql = "SELECT id, password,userPerms FROM users 
             WHERE username = '$username'
             AND active=1 LIMIT 0,1";
 
@@ -36,6 +36,7 @@ function checkUserLogin($username, $enteredPassword)
         while ($record = mysqli_fetch_array($result)) {
             $data['id'] = (int)$record['id'];
             $registeredPassword = $record['password'];
+            //$perms=$record['userPerms'];
         }
 
         if (!password_verify($enteredPassword, $registeredPassword)) {
@@ -58,7 +59,7 @@ function existsUser($username)
     global $link;
 
     $sql = "SELECT id FROM users
-            WHERE username = '$username' AND (registration_expires>now() OR active ='1')";
+            WHERE email = '$username' AND (registration_expires>now() OR active ='1')";
 
     $result = mysqli_query($link, $sql) or die(mysqli_error($link));
 
@@ -237,7 +238,7 @@ function selectQuery($line,$name,$link)
     return mysqli_query($link,$query);
 }
 
-function submit($date,$desc,$budget,$total,$income,$otherIncome,$tableName,$link,$id)
+function submit($date,$desc,$budget,$total,$income,$otherIncome,$tableName,$link,$id,$expenses)
 {
     $updateQuery = "
     UPDATE tableinfo 
@@ -247,7 +248,8 @@ function submit($date,$desc,$budget,$total,$income,$otherIncome,$tableName,$link
     budget='$budget',
     Total='$total',
     income='$income',
-    otherIncome='$otherIncome'
+    otherIncome='$otherIncome',
+    monthlyExpenses='$expenses'
     WHERE
     tableName='$tableName' AND ID='$id'";
     mysqli_query($link, $updateQuery);

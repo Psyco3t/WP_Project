@@ -96,6 +96,15 @@ $fetch6=mysqli_fetch_array($selectExec6);
 
                 </li>
 
+                <li style="text-transform: uppercase; font-weight: bold; margin: auto;">
+                    <a href="../HTML/adminPage.php" <?php if(ISSET($_SESSION['admin'])  && $_SESSION['admin']==true){
+
+                        echo 'style="display:block;"'; }
+                    else{
+                        echo 'style="display:none;"';}?>>AdminPanel</a>
+
+                </li>
+
             </ul>
         </nav>
     </div>
@@ -252,6 +261,12 @@ $fetch6=mysqli_fetch_array($selectExec6);
                     <input type="number" class="form-control" id="income"
                            aria-describedby="emailHelp" name="income" value="<?php echo $fetch['income']?>">
                 </div>
+
+                <div class="mb-3">
+                    <label for="totalSpent" class="form-label">Total Spent</label>
+                    <input type="number" class="form-control" id="TotalSpent"
+                           aria-describedby="emailHelp" name="TotalSpent" value="<?php echo $fetch['monthlyExpenses']?>">
+                </div>
             </div>
         </div>
 
@@ -266,12 +281,12 @@ $fetch6=mysqli_fetch_array($selectExec6);
         </div>
 
         <div style="margin-top: 250px;width: 30%">
-        <button type="submit" class="btn btn-primary" name="updateBtn">Update</button>
-        </div>
-        <div style="margin-top: 250px;width: 30%">
             <button type="submit" class="btn btn-primary" name="SubmitBtn">Submit</button>
         </div>
         </form>
+    <div style="margin-top: 250px;width: 40%">
+        <button type="button" class="btn btn-primary" name="updateBtn" onclick="calculateTotal()">Calculate</button>
+    </div>
 </div>
 </body>
 </html>

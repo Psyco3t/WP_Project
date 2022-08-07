@@ -1,6 +1,7 @@
 <?php
 session_start();
-require '../PHP/config.php';
+require_once '../PHP/config.php';
+require_once '../PHP/functions_def.php';
 $user=$_SESSION['username'];
 
 $selectQuery="SELECT * FROM tablename WHERE username='$user'";
@@ -79,7 +80,7 @@ $selectExec=mysqli_query($link,$selectQuery);
 </div>
 
 <div class="col bg-light p-3">
-    <form action="../PHP/select.php" method="post" style="margin-left: 800px; margin-right: 800px; width: 20%" id="selectForm">
+    <form action="../PHP/select.php" method="post" style="margin-left: 600px; margin-right: 800px; width: 20%" id="selectForm">
         <h1>Select a table</h1>
         <div class="form-group" style="margin: auto">
         <select class="custom-select custom-select-lg mb-3" id="select" name="tables">

@@ -5,6 +5,7 @@ require_once '../PHP/functions_def.php';
 $sql="SELECT * FROM tableinfo";
 $count=mysqli_query($link,$sql);
 $getCount=mysqli_num_rows($count);
+$monthlyExpenses=mysqli_real_escape_string($link,$_POST['TotalSpent']);
 
 $date=mysqli_real_escape_string($link,$_POST['date']);
 $desc=mysqli_real_escape_string($link,$_POST['desc']);
@@ -51,22 +52,23 @@ if(isset($_POST['SubmitBtn']))
     budget='$budget',
     Total='$total',
     income='$income',
-    otherIncome='$otherIncome'
+    otherIncome='$otherIncome',
+    monthlyExpenses='$monthlyExpenses'
     WHERE
     tableName='$tableName' AND ID=1";
     mysqli_query($link, $updateQuery);
 
-    submit($date2,$desc2,$budget2,$total2,$income,$otherIncome,$tableName,$link,2);
-    submit($date3,$desc3,$budget3,$total3,$income,$otherIncome,$tableName,$link,3);
-    submit($date4,$desc4,$budget4,$total4,$income,$otherIncome,$tableName,$link,4);
-    submit($date5,$desc5,$budget5,$total5,$income,$otherIncome,$tableName,$link,5);
-    submit($date6,$desc6,$budget6,$total6,$income,$otherIncome,$tableName,$link,6);
+    submit($date2,$desc2,$budget2,$total2,$income,$otherIncome,$tableName,$link,2,$monthlyExpenses);
+    submit($date3,$desc3,$budget3,$total3,$income,$otherIncome,$tableName,$link,3,$monthlyExpenses);
+    submit($date4,$desc4,$budget4,$total4,$income,$otherIncome,$tableName,$link,4,$monthlyExpenses);
+    submit($date5,$desc5,$budget5,$total5,$income,$otherIncome,$tableName,$link,5,$monthlyExpenses);
+    submit($date6,$desc6,$budget6,$total6,$income,$otherIncome,$tableName,$link,6,$monthlyExpenses);
 
     redirection('../HTML/tablePage.php');
 
 }
 
-if(isset($_POST['updateBtn']))
+/*if(isset($_POST['updateBtn']))
 {
-
-}
+    redirection('../HTML/tablePage.php');
+}*/

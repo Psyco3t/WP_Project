@@ -97,6 +97,20 @@ function checkName()
     }
 }
 
+function calculateTotal()
+{
+    const num1=parseInt(document.getElementById('total').value);
+    const num2=parseInt(document.getElementById('total2').value);
+    const num3=parseInt(document.getElementById('total3').value);
+    const num4=parseInt(document.getElementById('total4').value);
+    const num5=parseInt(document.getElementById('total5').value);
+    const num6=parseInt(document.getElementById('total6').value);
+
+    const total=+num1+num2+num3+num4+num5+num6;
+    document.getElementById('TotalSpent').value=total;
+
+}
+
 function init() {
     document.getElementById('fl').addEventListener('click', function (e) {
         let forgetForm = document.getElementById('forget');
