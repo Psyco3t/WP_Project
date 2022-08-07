@@ -30,3 +30,12 @@ $user=$_SESSION['username'];
         }
         redirection('../HTML/dbSelectPage.php');
     }
+
+    elseif (isset($_POST['deleteBtn']))
+    {
+        $table=$_POST['tables'];
+        $sqlQuery="
+        DELETE FROM tablename WHERE username='$user' AND budgetTableName='$table'";
+        mysqli_query($link,$sqlQuery);
+        redirection('../HTML/dbSelectPage.php');
+    }
