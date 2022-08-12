@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2022 at 06:29 PM
+-- Generation Time: Aug 07, 2022 at 05:01 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.0
 
@@ -59,7 +59,19 @@ INSERT INTO `logs` (`id`, `browser`, `ip`, `loginDate`, `user`) VALUES
 (22, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-01 14:54:42.845', 'sycer'),
 (23, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-02 15:30:29.289', 'sycer'),
 (24, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-04 14:30:09.425', 'sycer'),
-(25, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-04 18:23:57.088', 'psycon');
+(25, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-04 18:23:57.088', 'psycon'),
+(26, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-04 18:38:11.810', 'sycer'),
+(27, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-04 18:49:27.309', 'sycer'),
+(28, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-04 18:50:28.972', 'sycer'),
+(29, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-07 12:40:09.260', 'sycer'),
+(30, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-07 12:52:28.659', 'sycer'),
+(31, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-07 13:45:45.010', 'sycer'),
+(32, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-07 13:46:12.657', 'sycer'),
+(33, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-07 13:50:24.036', 'sycer'),
+(34, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-07 13:51:53.110', 'psycon'),
+(35, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-07 13:54:49.296', 'sycer'),
+(36, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-07 14:03:36.290', 'sycer'),
+(37, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0', '127.0.0.1', '2022-08-07 17:00:42.642', 'sycer');
 
 -- --------------------------------------------------------
 
@@ -86,12 +98,12 @@ CREATE TABLE `tableinfo` (
 --
 
 INSERT INTO `tableinfo` (`tableName`, `budget`, `monthlyExpenses`, `lastMonthDate`, `income`, `otherIncome`, `budgetDescript`, `currentDate`, `memberData`, `Total`, `ID`) VALUES
-('FunnyTable', 50, NULL, NULL, 1000, 0, 'A cry for help', '2022-08-02', NULL, 30, 1),
-('FunnyTable', 30, NULL, NULL, 1000, 0, 'frog', '2022-08-04', NULL, 29, 2),
-('FunnyTable', 1, NULL, NULL, 1000, 0, 'Szamla', '2022-08-05', NULL, 1200, 3),
-('FunnyTable', 2, NULL, NULL, 1000, 0, 'szamla2', '2022-08-11', NULL, 1500, 4),
-('FunnyTable', 3, NULL, NULL, 1000, 0, 'szamla3', '2022-08-12', NULL, 1600, 5),
-('FunnyTable', 4, NULL, NULL, 1000, 0, 'szamla4', '2022-08-17', NULL, 1700, 6);
+('FunnyTable', 50, 6059, NULL, 1000, 0, 'A cry for help', '2022-08-02', NULL, 30, 1),
+('FunnyTable', 30, 6059, NULL, 1000, 0, 'frog', '2022-08-04', NULL, 29, 2),
+('FunnyTable', 1, 6059, NULL, 1000, 0, 'Szamla', '2022-08-05', NULL, 1200, 3),
+('FunnyTable', 2, 6059, NULL, 1000, 0, 'szamla2', '2022-08-11', NULL, 1500, 4),
+('FunnyTable', 3, 6059, NULL, 1000, 0, 'szamla3', '2022-08-12', NULL, 1600, 5),
+('FunnyTable', 4, 6059, NULL, 1000, 0, 'szamla4', '2022-08-17', NULL, 1700, 6);
 
 -- --------------------------------------------------------
 
@@ -110,9 +122,7 @@ CREATE TABLE `tablename` (
 --
 
 INSERT INTO `tablename` (`username`, `budgetTableName`, `id`) VALUES
-('sycer', 'FunnyTable', 7),
-('sycer', 'NewTable', 8),
-('sycer', 'testTable', 1);
+('sycer', 'FunnyTable', 7);
 
 -- --------------------------------------------------------
 
@@ -138,8 +148,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `created_at`, `userPerms`, `email`, `active`, `token`, `registration_expires`, `resetToken`) VALUES
-(12, 'sycer', '$2y$10$aCwOgPmsTHQWnPiYTZfa3u7U78nDjES3tEgLKi8bKmUXZ6ys0Q596', '2022-05-19 22:33:41.698', NULL, 'nattila2001@gmail.com', 1, '', '0000-00-00 00:00:00', 'QpfunpffOrgwzyvzYbtfkqkuJvmkomwpRlvqybhoHztmiwfsGuxlzoxiRedu'),
-(13, 'psycon', '$2y$10$WbMNWXd3EXwDHBoc8doz4emoD4dqyyzQX/5QCP0C7WAdi6A41ec/K', '2022-08-04 18:23:33.035', NULL, 'nattila2001@gmail.com', 1, '', '0000-00-00 00:00:00', '');
+(12, 'sycer', '$2y$10$aCwOgPmsTHQWnPiYTZfa3u7U78nDjES3tEgLKi8bKmUXZ6ys0Q596', '2022-05-19 22:33:41.698', 1, 'nattila2001@gmail.com', 1, '', '0000-00-00 00:00:00', 'CnadumnwCifartovIygpbvdyPwbbeiwsOfkoxxnkEeryieyiHdkohwqcIubm'),
+(15, 'psycon', '$2y$10$Sju/u0g/NF0lBIZzxneA9OxjN.YSbdbY66IWNxSYaZIHeKYWdXkqq', '2022-08-07 13:51:16.363', NULL, 'assblast@gmail.com', 1, '', '0000-00-00 00:00:00', '');
 
 --
 -- Indexes for dumped tables
@@ -179,7 +189,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `tablename`
@@ -191,7 +201,7 @@ ALTER TABLE `tablename`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

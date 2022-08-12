@@ -50,7 +50,7 @@ if (empty($email) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     redirection('../HTML/registerPage.php?r=8');
 }
 
-if (!existsUser($username)) {
+if (!existsUser($email)) {
     $token = createCode(40);
     $id_user_web = registerUser($username, $password, $email, $token);
     if (sendData($username, $email, $token)) {
