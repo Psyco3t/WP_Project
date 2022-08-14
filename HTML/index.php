@@ -2,16 +2,16 @@
 session_start();
 ?>
 <!DOCTYPE html>
-<html>
+<html style="height: 100%">
  <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <title>Haztartas</title>
+     <title>EasyBudgeting</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor">
  </head>
- <body>
+ <body style="height: 100%">
   <div style="width: available">
    <div style="height: 150px; background-color: brown; width: auto">
    </div>
@@ -27,7 +27,7 @@ session_start();
       <a href="index.php" style="text-decoration: none">Home</a>
      </li>
      <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: 10%">
-      <a href="#" style="text-decoration: none;">About</a>
+      <a href="../HTML/aboutPage.php" style="text-decoration: none;">About</a>
      </li>
      <!---<li style="text-transform: uppercase; font-weight: bold; margin: auto;">
       <a href="#" style="text-decoration: none">Users</a>
@@ -78,6 +78,16 @@ session_start();
    </nav>
    </div>
   </div>
+ <div style="flex: auto; display: flex;height: 100%; background-image: url('../resources/BudgetOpaque.png');background-size: 100% " id="ImageDiv">
+     <div style="width: 20%;height: 100%"></div>
+     <div style="width: 60%; padding: 100px;height: 100%; background-color: darkgray; opacity: 90%">
+         <H2 style="text-align: center">Welcome</H2>
+         <p style="font-size: 25px">Welcome to EasyBudgeting a simple site meant to help you set up your budget plans you can read more about it in the
+         about tab on the navbar and once you are ready you can start with registering an account and logging in make sure you check your emails once you
+          register hope you will enjoy this site.</p>
+     </div>
+     <div style="width: 20%;height: 100%"></div>
+ </div>
  </body>
 </html>
 

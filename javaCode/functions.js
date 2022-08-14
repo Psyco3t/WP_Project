@@ -111,6 +111,11 @@ function calculateTotal()
 
 }
 
+function registerCheck()
+{
+
+}
+
 function init() {
     document.getElementById('fl').addEventListener('click', function (e) {
         let forgetForm = document.getElementById('forget');

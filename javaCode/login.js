@@ -1,13 +1,13 @@
 function login() {
-    var user=document.getElementById("email");
-    var password=document.getElementById("password");
-    var email=document.getElementById("email").value;
-    var pass=document.getElementById("password").value;
+    var user=document.getElementById("registerUsername");
+    var password=document.getElementById("registerPassword");
+    var email=document.getElementById("registerEmail").value;
+    var pass=document.getElementById("registerPasswordConfirm").value;
     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/; //goddamn regex man
-    if(document.getElementById("email").value.length==0){
+    if(document.getElementById("registerEmail").value.length==0){
         alert('Please enter email');
     }
-    else if (document.getElementById("password").value.length==0){
+    else if (document.getElementById("registerPassword").value.length==0){
         alert('please enter password');
         return false;
     }

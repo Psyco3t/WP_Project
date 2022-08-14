@@ -23,7 +23,7 @@ $user=$_SESSION['username'];
         $newTable="INSERT INTO tablename (budgetTableName,username)
                     VALUES ('$tableName','$user')";
         mysqli_query($link,$newTable);
-        for($i=1;$i<6;$i++) {
+        for($i=1;$i<=6;$i++) {
         $newEntry="INSERT INTO tableinfo (tableName,ID)
                     VALUES ('$tableName','$i')";
             mysqli_query($link, $newEntry);
@@ -37,5 +37,8 @@ $user=$_SESSION['username'];
         $sqlQuery="
         DELETE FROM tablename WHERE username='$user' AND budgetTableName='$table'";
         mysqli_query($link,$sqlQuery);
+        $delQuery="
+        DELETE FROM tableinfo WHERE tableName='$table'";
+        mysqli_query($link,$delQuery);
         redirection('../HTML/dbSelectPage.php');
     }
