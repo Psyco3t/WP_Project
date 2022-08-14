@@ -32,8 +32,8 @@ if (!empty($username) AND !empty($password)) {
         }
         logInfo($browser,$ipAddr,$link,$username);
         $_SESSION['logged_in']=true;
-        echo'<script>alert("successfully logged in");window.location.href="../HTML/index.php" </script>';  //correct way of displaying alert message
-        //redirection('../HTML/index.php');
+        //echo'<script>alert("successfully logged in");window.location.href="../HTML/index.php" </script>';  //correct way of displaying alert message
+        redirection('../HTML/index.php');
     } else {
         redirection('../HTML/loginPage.php?l=1');
     }

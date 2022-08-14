@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head style="height: 100%">
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script type="text/javascript" src="../javaCode/functions.js"></script>
+<?php
+session_start();
+?>
 
-</head>
-<body>
 <!DOCTYPE html>
-<html>
+<html style="height: 100%">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -87,57 +79,22 @@
         </nav>
     </div>
 </div>
-<div class="col bg-light p-3" style="display: flex;height: 100%">
-    <div style="width: 30%"></div>
-    <div style="width: 40%">
-        <form action="../PHP/login.php" method="post" style="margin-top: 100px; width: auto;">
-            <h1>Login</h1>
-            <div class="form-group">
-                <label for="loginUsername">Username</label>
-                <input type="text" class="form-control" id="loginUsername"
-                       placeholder="Enter username" name="username">
-            </div>
-            <div class="form-group">
-                <label for="loginPassword">Password</label>
-                <input type="password" class="form-control" id="loginPassword" placeholder="Password"
-                       name="password">
-            </div>
-            <input type="hidden" name="action" value="login">
-            <button type="submit" class="btn btn-primary" onsubmit="loginSuccess()" onclick="loginCheck()">Login</button><br>
-
-            <?php
-            require '../PHP/config.php';
-            $l = 0;
-
-            if (isset($_GET["l"]) and is_numeric($_GET['l'])) {
-                $l = (int)$_GET["l"];
-
-                if (array_key_exists($l, $messages)) {
-                    echo '
-                    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
-                        '.$messages[$l].'
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    ';
-                }
-            }
-            ?>
-
-            <a href="#" id="fl">Forgot your password?</a>
-        </form>
-        <form action="../PHP/reset.php" method="post" name="forget" id="forget" style="display:none; width: 20%;margin-left: 40%">
-            <div class="form-group">
-                <label for="forgetEmail">E-mail</label>
-                <input type="email" class="form-control" id="forgetEmail" placeholder="Enter your e-mail address"
-                       name="email">
-            </div>
-            <input type="hidden" name="action" value="forget">
-            <button type="submit" class="btn btn-primary" onsubmit="emailSent(); resetEmailCheck()" onclick="emailSent()">Send Email</button>
-        </form>
-
+<div style="flex: auto; display: flex;height: 100%; background-image: url('../resources/BudgetOpaque.png');background-size: 100% " id="ImageDiv">
+    <div style="width: 20%;height: 100%"></div>
+    <div style="width: 60%; padding: 100px;height: 100%; background-color: darkgray; opacity: 90%">
+        <H2 style="text-align: center">So you want to register?</H2>
+        <p style="font-size: 25px">Assuming you didnt read the home page first you must create an account register by providing your username a valid email and a password
+        after that check your emails because we sent an activation code to you all you have to do is click the link or copy it into your browser
+        aaaand you are done</p>
+        <H2 style="text-align: center">Okay, I registered what now?</H2>
+        <p style="font-size: 25px">
+            So now that you have an account log in if you havent already or maybe you are already logged in
+            after that go ahead and click on the Select/Create Table button here you will have to create a table and then select it or maybe
+            you have already been thrown to the budget table page here you can edit and set your income and budget plans its recommended to categorize
+            your budget tables so each table consists of 6 data tables. And that is basically it.
+        </p>
     </div>
-    <div style="width: 30%"></div>
+    <div style="width: 20%;height: 100%"></div>
+</div>
 </body>
 </html>
