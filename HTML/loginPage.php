@@ -127,7 +127,7 @@
 
             <a href="#" id="fl">Forgot your password?</a>
         </form>
-        <form action="../PHP/reset.php" method="post" name="forget" id="forget" style="display:none; width: 20%;margin-left: 40%">
+        <form action="../PHP/reset.php" method="post" name="forget" id="forget" style="display:none; width: 40%;margin-left: 40%">
             <div class="form-group">
                 <label for="forgetEmail">E-mail</label>
                 <input type="email" class="form-control" id="forgetEmail" placeholder="Enter your e-mail address"

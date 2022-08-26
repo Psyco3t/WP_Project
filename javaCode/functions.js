@@ -111,9 +111,66 @@ function calculateTotal()
 
 }
 
-function registerCheck()
-{
 
+function onRegisterSubmit()
+{
+    var username=document.getElementById("registerUsername").value;
+    var password=document.getElementById("registerPassword").value;
+    var passwordConfirm=document.getElementById("registerPasswordConfirm").value;
+    var form=document.getElementById('registerForm');
+
+
+    if(username.length>0)
+    {
+        document.getElementById('1').innerHTML="";
+        document.getElementById("registerUsername").style.border = "";
+    }
+    else
+    {
+        form.addEventListener('submit', function (e) {
+            // prevent the form from submitting
+            e.preventDefault();
+
+        });
+        document.getElementById('1').innerHTML="Please enter a username";
+        //borders.style.border="red solid 2px";
+        document.getElementById("registerUsername").style.border = "thin solid red";
+    }
+
+    if(password.length<=8)
+    {
+        form.addEventListener('submit', function (e) {
+            // prevent the form from submitting
+            e.preventDefault();
+
+        });
+        document.getElementById('2').innerHTML="Please enter a password!";
+        //borders.style.border="2px solid red";
+        document.getElementById("registerPassword").style.border = "thin solid red";
+    }
+    else
+    {
+        document.getElementById('2').innerHTML="";
+        document.getElementById("registerPassword").style.border = "";
+    }
+
+    if(passwordConfirm===password)
+    {
+        document.getElementById('3').innerHTML="";
+        document.getElementById("registerPasswordConfirm").style.border = "";
+    }
+
+    else
+    {
+        form.addEventListener('submit', function (e) {
+            // prevent the form from submitting
+            e.preventDefault();
+
+        });
+        document.getElementById('3').innerHTML="Password does not match";
+        //borders.style.border="2px solid red";
+        document.getElementById("registerPasswordConfirm").style.border = "thin solid red";
+    }
 }
 
 function init() {

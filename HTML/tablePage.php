@@ -6,14 +6,51 @@ $sql="SELECT * FROM tableinfo";
 $count=mysqli_query($link,$sql);
 $getCount=mysqli_num_rows($count);
 $selectExec=null;
+$user=$_SESSION['username'];
 
     $tablename = $_SESSION['table'];
-    $table = "SELECT * FROM tableinfo WHERE tableName='$tablename' AND ID=1";
+    /*$table = "SELECT * FROM tableinfo WHERE tableName='$tablename' AND ID=1";
     $table2 = "SELECT * FROM tableinfo WHERE tableName='$tablename' AND ID=2";
     $table3 = "SELECT * FROM tableinfo WHERE tableName='$tablename' AND ID=3";
     $table4 = "SELECT * FROM tableinfo WHERE tableName='$tablename' AND ID=4";
     $table5 = "SELECT * FROM tableinfo WHERE tableName='$tablename' AND ID=5";
-    $table6 = "SELECT * FROM tableinfo WHERE tableName='$tablename' AND ID=6";
+    $table6 = "SELECT * FROM tableinfo WHERE tableName='$tablename' AND ID=6";*/
+
+$table = "
+SELECT * FROM tablename 
+INNER JOIN jointable
+ON tablename.id=jointable.UID
+INNER JOIN tableinfo
+ON jointable.TableID=tableinfo.tableID and tableinfo.ID=1 AND(tablename.username='$user') and (tableinfo.tableName='$tablename');";
+$table2 = "
+SELECT * FROM tablename 
+INNER JOIN jointable
+ON tablename.id=jointable.UID
+INNER JOIN tableinfo
+ON jointable.TableID=tableinfo.tableID and tableinfo.ID=2 AND(tablename.username='$user') and (tableinfo.tableName='$tablename');";
+$table3 = "
+SELECT * FROM tablename 
+INNER JOIN jointable
+ON tablename.id=jointable.UID
+INNER JOIN tableinfo
+ON jointable.TableID=tableinfo.tableID and tableinfo.ID=3 AND(tablename.username='$user') and (tableinfo.tableName='$tablename');";
+$table4 = "
+SELECT * FROM tablename 
+INNER JOIN jointable
+ON tablename.id=jointable.UID
+INNER JOIN tableinfo
+ON jointable.TableID=tableinfo.tableID and tableinfo.ID=4 AND(tablename.username='$user') and (tableinfo.tableName='$tablename');";
+$table5 = "SELECT * FROM tablename 
+INNER JOIN jointable
+ON tablename.id=jointable.UID
+INNER JOIN tableinfo
+ON jointable.TableID=tableinfo.tableID and tableinfo.ID=5 AND(tablename.username='$user') and (tableinfo.tableName='$tablename');";
+$table6 = "
+SELECT * FROM tablename 
+INNER JOIN jointable
+ON tablename.id=jointable.UID
+INNER JOIN tableinfo
+ON jointable.TableID=tableinfo.tableID and tableinfo.ID=6 AND(tablename.username='$user') and (tableinfo.tableName='$tablename');";
 
     $selectExec = mysqli_query($link, $table);
     $selectExec2 = mysqli_query($link, $table2);
@@ -112,6 +149,9 @@ $fetch6=mysqli_fetch_array($selectExec6);
     <div style="background-size: 100%; background-image: url('../resources/BudgetOpaque.png'); height: 100%">
 <div>
     <form method="post" action="../PHP/tableHandle.php" style="margin: 15px">
+        <div style="width: 100%">
+            <h3>Current Table: <?php echo $tablename?></h3>
+        </div>
     <div style="width: 70%;display: flex">
         <div style="width: 50%">
         <div class="mb-3">
@@ -287,6 +327,9 @@ $fetch6=mysqli_fetch_array($selectExec6);
         </form>
     <div style="margin-top: 250px;width: 40%">
         <button type="button" class="btn btn-primary" name="updateBtn" onclick="calculateTotal()">Calculate</button>
+    </div>
+    <div style="width: 40%;margin-top: 250px">
+        <a href="../HTML/sharePage.php" >Share table?</a>
     </div>
 </div>
     </div>

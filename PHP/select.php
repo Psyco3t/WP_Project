@@ -28,6 +28,23 @@ $user=$_SESSION['username'];
                     VALUES ('$tableName','$i')";
             mysqli_query($link, $newEntry);
         }
+
+        $getUId="SELECT id FROM tablename WHERE username='$user'";
+        $id=mysqli_query($link,$getUId);
+        $idFetch=mysqli_fetch_array($id);
+        $idArray=$idFetch['id'];
+
+        $getSql1=fetchArrayFromTableInfo($tableName,1,$link);
+        $getSql2=fetchArrayFromTableInfo($tableName,2,$link);
+        $getSql3=fetchArrayFromTableInfo($tableName,3,$link);
+        $getSql4=fetchArrayFromTableInfo($tableName,4,$link);
+        $getSql5=fetchArrayFromTableInfo($tableName,5,$link);
+        $getSql6=fetchArrayFromTableInfo($tableName,6,$link);
+
+        $setJointable="INSERT INTO jointable (UID,TableID)
+VALUES ('$idArray','$getSql1'),('$idArray','$getSql2'),('$idArray','$getSql3'),('$idArray','$getSql4'),('$idArray','$getSql5'),('$idArray','$getSql6')";
+        mysqli_query($link,$setJointable);
+
         redirection('../HTML/dbSelectPage.php');
     }
 

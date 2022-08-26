@@ -4,13 +4,7 @@ require_once '../PHP/config.php';
 require_once '../PHP/functions_def.php';
 $user=$_SESSION['username'];
 
-//$selectQuery="SELECT * FROM tablename WHERE username='$user'";
-$selectQuery="
-SELECT * FROM tablename 
-INNER JOIN jointable
-ON tablename.id=jointable.UID
-INNER JOIN tableinfo
-ON jointable.TableID=tableinfo.tableID and tableinfo.ID=1 AND(tablename.username='$user');";
+$selectQuery="SELECT * FROM tablename WHERE username!='$user'";
 
 $selectExec=mysqli_query($link,$selectQuery);
 ?>
@@ -98,31 +92,23 @@ $selectExec=mysqli_query($link,$selectQuery);
     <div style="width: 20%"></div>
     <div style="width: 60%">
         <div>
-            <form action="../PHP/select.php" method="post" style="width: auto" id="selectForm">
-                <h1>Select a table</h1>
+            <form action="../PHP/share.php" method="post" style="width: auto;height: 100%" id="selectForm">
+                <h1>Select a user to share with</h1>
                 <div class="form-group" style="margin: auto">
                     <select class="custom-select custom-select-lg mb-3" id="select" name="tables">
                         <option selected disabled value="default">Select</option>
                         <?php while($table=mysqli_fetch_array($selectExec)):;?>
-                            <option value="<?php echo $table['tableName']; ?>"> <?php echo $table['tableName']; ?></option>
-                            <?php $_SESSION['selectedTable']=$table['tableName'];
+                            <option value="<?php echo $table['username']; ?>"> <?php echo $table['username']; ?></option>
+                            <?php $_SESSION['tableOwner']=$table['username'];
                         endwhile;?>
                     </select>
                     <p id="1" style="color: red"></p>
                 </div>
-                <h3>Or create a new one</h3>
-                <div class="form-group" style="margin: auto">
-                    <label for="newTable">TableName</label>
-                    <input type="text" class="form-control" id="newTable" placeholder="Enter table name" name="newTable">
-                    <p id="2" style="color: red"></p>
-                </div>
                 <br>
-                <button type="submit" class="btn btn-secondary" name="deleteBtn" value="Delete">Delete</button>
-                <button type="submit" class="btn btn-primary" style="margin-left: 50px" name="continueBtn" onclick="checkSelect();" value="Continue">Continue</button>
-                <button type="submit" class="btn btn-primary" name="createBtn" onclick="checkName()" value="Create">Create</button>
+                <button type="submit" class="btn btn-primary" name="createBtn" onclick="" value="Create">Share</button>
             </form>
+        </div>
+        <div style="width: 20%"></div>
     </div>
-    <div style="width: 20%"></div>
-</div>
 </body>
 </html>
