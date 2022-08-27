@@ -4,6 +4,8 @@ require_once '../PHP/config.php';
 require_once '../PHP/functions_def.php';
 $sql="SELECT * FROM logs";
 $ExecSql=$link->query($sql);
+$tableName="SELECT * FROM tablename";
+$tableFetch=$link->query($tableName);
 
 ?>
 
@@ -89,7 +91,7 @@ $ExecSql=$link->query($sql);
     <div style="padding: 100px;display: flex">
         <div style="margin-left: 100px; display: flex">
             <div>
-                <table>
+                <table class="table">
                     <tr>
                     <th>User</th>
                     <th>Browser</th>
@@ -104,6 +106,25 @@ $ExecSql=$link->query($sql);
                         <td><?php echo $fetchdata['ip']. " ";?> </td>
                         <td><?php echo $fetchdata['loginDate']. " ";?> </td>
                     </tr>
+                    <?php }?>
+                </table>
+            </div>
+        </div>
+        <div style="margin-left: 20px;">
+            <div>
+                <table class="table">
+                    <tr>
+                        <th>User</th>
+                        <th>TableName</th>
+                        <th>ID</th>
+                    </tr>
+                    <?php while($fetchTNames=$tableFetch->fetch_assoc())
+                    { ?>
+                        <tr>
+                            <td><?php echo $fetchTNames['username'] ." ";?> </td>
+                            <td><?php echo $fetchTNames['budgetTableName']. " ";?> </td>
+                            <td><?php echo $fetchTNames['id']. " ";?> </td>
+                        </tr>
                     <?php }?>
                 </table>
             </div>

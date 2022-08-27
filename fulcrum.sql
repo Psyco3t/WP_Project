@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2022 at 01:01 AM
+-- Generation Time: Aug 27, 2022 at 11:14 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.0
 
@@ -43,12 +43,12 @@ INSERT INTO `jointable` (`UID`, `TableID`) VALUES
 (13, 16),
 (13, 17),
 (13, 18),
-(15, 19),
-(15, 20),
-(15, 21),
-(15, 22),
-(15, 23),
-(15, 24);
+(17, 25),
+(17, 26),
+(17, 27),
+(17, 28),
+(17, 29),
+(17, 30);
 
 -- --------------------------------------------------------
 
@@ -120,7 +120,12 @@ INSERT INTO `logs` (`id`, `browser`, `ip`, `loginDate`, `user`) VALUES
 (54, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0', '127.0.0.1', '2022-08-24 16:29:31.324', 'psycon'),
 (55, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0', '127.0.0.1', '2022-08-26 00:24:37.618', 'psycon'),
 (56, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0', '127.0.0.1', '2022-08-26 00:31:45.060', 'sycer'),
-(57, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0', '127.0.0.1', '2022-08-26 00:32:13.803', 'sycer');
+(57, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0', '127.0.0.1', '2022-08-26 00:32:13.803', 'sycer'),
+(58, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0', '127.0.0.1', '2022-08-27 17:31:43.923', 'sycer'),
+(59, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0', '127.0.0.1', '2022-08-27 19:34:21.908', 'Guy'),
+(60, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0', '127.0.0.1', '2022-08-27 19:41:22.062', 'sycer'),
+(61, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0', '127.0.0.1', '2022-08-27 22:56:12.344', 'sycer'),
+(62, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0', '127.0.0.1', '2022-08-27 23:01:45.165', 'sycer');
 
 -- --------------------------------------------------------
 
@@ -132,7 +137,7 @@ CREATE TABLE `tableinfo` (
   `tableName` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `budget` int(11) DEFAULT NULL,
   `monthlyExpenses` int(11) DEFAULT NULL,
-  `lastMonthDate` date DEFAULT NULL,
+  `dateCreated` timestamp(3) NULL DEFAULT current_timestamp(3),
   `income` int(11) DEFAULT NULL,
   `otherIncome` int(11) DEFAULT NULL,
   `budgetDescript` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -146,19 +151,19 @@ CREATE TABLE `tableinfo` (
 -- Dumping data for table `tableinfo`
 --
 
-INSERT INTO `tableinfo` (`tableName`, `budget`, `monthlyExpenses`, `lastMonthDate`, `income`, `otherIncome`, `budgetDescript`, `currentDate`, `tableID`, `Total`, `ID`) VALUES
+INSERT INTO `tableinfo` (`tableName`, `budget`, `monthlyExpenses`, `dateCreated`, `income`, `otherIncome`, `budgetDescript`, `currentDate`, `tableID`, `Total`, `ID`) VALUES
 ('NewTable', 500, 2700, NULL, 11200, 0, 'wednesday', '2022-08-24', 13, 300, 1),
 ('NewTable', 100, 2700, NULL, 11200, 0, 'thursday', '2022-08-25', 14, 400, 2),
 ('NewTable', 600, 2700, NULL, 11200, 0, 'friday', '2022-08-26', 15, 100, 3),
 ('NewTable', 700, 2700, NULL, 11200, 0, 'saturday', '2022-08-27', 16, 500, 4),
 ('NewTable', 800, 2700, NULL, 11200, 0, 'sunday', '2022-08-28', 17, 600, 5),
 ('NewTable', 900, 2700, NULL, 11200, 0, 'monday', '2022-08-29', 18, 800, 6),
-('FunnyTable', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 19, NULL, 1),
-('FunnyTable', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 20, NULL, 2),
-('FunnyTable', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 21, NULL, 3),
-('FunnyTable', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 22, NULL, 4),
-('FunnyTable', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 23, NULL, 5),
-('FunnyTable', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 24, NULL, 6);
+('awesome', NULL, NULL, '2022-08-27 21:01:15.432', NULL, NULL, NULL, NULL, 25, NULL, 1),
+('awesome', NULL, NULL, '2022-08-27 21:01:15.435', NULL, NULL, NULL, NULL, 26, NULL, 2),
+('awesome', NULL, NULL, '2022-08-27 21:01:15.436', NULL, NULL, NULL, NULL, 27, NULL, 3),
+('awesome', NULL, NULL, '2022-08-27 21:01:15.440', NULL, NULL, NULL, NULL, 28, NULL, 4),
+('awesome', NULL, NULL, '2022-08-27 21:01:15.441', NULL, NULL, NULL, NULL, 29, NULL, 5),
+('awesome', NULL, NULL, '2022-08-27 21:01:15.443', NULL, NULL, NULL, NULL, 30, NULL, 6);
 
 -- --------------------------------------------------------
 
@@ -177,7 +182,7 @@ CREATE TABLE `tablename` (
 --
 
 INSERT INTO `tablename` (`username`, `budgetTableName`, `id`) VALUES
-('sycer', 'FunnyTable', 15),
+('sycer', 'awesome', 17),
 ('psycon', 'NewTable', 13);
 
 -- --------------------------------------------------------
@@ -206,6 +211,19 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `created_at`, `userPerms`, `email`, `active`, `token`, `registration_expires`, `resetToken`) VALUES
 (12, 'sycer', '$2y$10$aCwOgPmsTHQWnPiYTZfa3u7U78nDjES3tEgLKi8bKmUXZ6ys0Q596', '2022-05-19 22:33:41.698', 1, 'nattila2001@gmail.com', 1, '', '0000-00-00 00:00:00', 'CnadumnwCifartovIygpbvdyPwbbeiwsOfkoxxnkEeryieyiHdkohwqcIubm'),
 (15, 'psycon', '$2y$10$jKnxIG0VFr6nJad.W.Ulau.zAggiALvsqlNTL/SZNPjsejkTbAiS6', '2022-08-07 13:51:16.363', NULL, 'assblast@gmail.com', 1, '', '0000-00-00 00:00:00', 'ZqmyapmIfiwrxkEwrcfmuKtxctxzKftadnmLlurxtmQqwtgbtJoznmjlNcxz');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `ID` int(11) NOT NULL,
+  `text` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
+  `budget` int(11) NOT NULL,
+  `TableName` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -245,6 +263,13 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `TableName` (`TableName`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -252,25 +277,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `tableinfo`
 --
 ALTER TABLE `tableinfo`
-  MODIFY `tableID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `tableID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tablename`
 --
 ALTER TABLE `tablename`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -288,6 +319,12 @@ ALTER TABLE `jointable`
 --
 ALTER TABLE `tableinfo`
   ADD CONSTRAINT `tableInfo_to_tableName` FOREIGN KEY (`tableName`) REFERENCES `tablename` (`budgetTableName`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`TableName`) REFERENCES `tableinfo` (`tableName`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html style="height: 100%">
+<html style="height: 100%; width: auto">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor">
 </head>
-<body style="height: 100%">
+<body style="height: 100%; width: 100%">
 <div style="width: available">
     <div style="height: 150px; background-color: brown; width: auto">
     </div>
@@ -79,19 +79,19 @@ session_start();
         </nav>
     </div>
 </div>
-<div style="flex: auto; display: flex;height: 100%; background-image: url('../resources/BudgetOpaque.png');background-size: 100% " id="ImageDiv">
+<div style="flex: auto; display: flex;height: auto; background-image: url('../resources/BudgetOpaque.png');background-size: 100% " id="ImageDiv">
     <div style="width: 20%;height: 100%"></div>
     <div style="width: 60%; padding: 100px;height: 100%; background-color: darkgray; opacity: 90%">
         <H2 style="text-align: center">So you want to register?</H2>
-        <p style="font-size: 25px">Assuming you didnt read the home page first you must create an account register by providing your username a valid email and a password
-        after that check your emails because we sent an activation code to you all you have to do is click the link or copy it into your browser
-        aaaand you are done</p>
+        <p style="font-size: 25px">Assuming you didn't read the home page, first you must create an account. Register by providing your username, a valid e-mail and a password.
+            After that check your e-mails because we sent an activation code to you. All you have to do is click the link or copy it into your browser,
+            aaaand you are done!</p>
         <H2 style="text-align: center">Okay, I registered what now?</H2>
         <p style="font-size: 25px">
-            So now that you have an account log in if you havent already or maybe you are already logged in
-            after that go ahead and click on the Select/Create Table button here you will have to create a table and then select it or maybe
-            you have already been thrown to the budget table page here you can edit and set your income and budget plans its recommended to categorize
-            your budget tables so each table consists of 6 data tables. And that is basically it.
+            So now that you have an account, log in if you haven't already.
+            After that go ahead and click on the Select/Create Table button. Here you will have to create a table and then select it, or maybe
+            you have already been thrown to the budget table page. Here you can edit and set your income and budget plans. It's recommended to categorize
+            your budget tables, so each table consists of 6 data tables. And that is basically it.
         </p>
     </div>
     <div style="width: 20%;height: 100%"></div>

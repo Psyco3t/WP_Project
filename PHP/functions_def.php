@@ -263,7 +263,7 @@ function fetchArrayFromTableInfo($tableName,$ID,$link)
     return $arrayKey['tableID'];
 }
 
-function shareMail($email)
+function shareMail($email,$table)
 {
     $header = "From: EasyBudgeting <budgeting@gmail.com>\n";
     $header .= "X-Sender: budgeting@gmail.com\n";
@@ -273,7 +273,7 @@ function shareMail($email)
     $header .= "Content-Type: text/html; charset=UTF-8\n";
 
     $message = "Hi there";
-    $message .= "\n\n someone has decided to share a table with you check your available tables";
+    $message .= "\n\n someone has decided to share the ".$table." with you, check your available tables";
     $to = $email;
     $subject = "Password Reset";
     return mail($to, $subject, $message, $header);

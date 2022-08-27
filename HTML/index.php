@@ -12,7 +12,7 @@ session_start();
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor">
  </head>
  <body style="height: 100%">
-  <div style="width: available">
+  <div style="width: auto">
    <div style="height: 150px; background-color: brown; width: auto">
    </div>
    <div style="height: 20px; background-color: blue; width: auto">
@@ -23,10 +23,10 @@ session_start();
     </div>
     <nav style="display: flex; align-items: center; float: right; width: auto">
     <ul style="display: flex; list-style-type: none; margin: 0 auto; gap: 2rem; flex-wrap: wrap">
-     <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: 10%">
+     <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: auto">
       <a href="index.php" style="text-decoration: none">Home</a>
      </li>
-     <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: 10%">
+     <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: auto">
       <a href="../HTML/aboutPage.php" style="text-decoration: none;">About</a>
      </li>
      <!---<li style="text-transform: uppercase; font-weight: bold; margin: auto;">
@@ -79,14 +79,14 @@ session_start();
    </div>
   </div>
  <div style="flex: auto; display: flex;height: 100%; background-image: url('../resources/BudgetOpaque.png');background-size: 100% " id="ImageDiv">
-     <div style="width: 20%;height: 100%"></div>
-     <div style="width: 60%; padding: 100px;height: 100%; background-color: darkgray; opacity: 90%">
+     <div style="width: 20%;height: auto"></div>
+     <div style="width: 60%; padding: 100px;height: auto; background-color: darkgray; opacity: 90%">
          <H2 style="text-align: center">Welcome</H2>
-         <p style="font-size: 25px">Welcome to EasyBudgeting a simple site meant to help you set up your budget plans you can read more about it in the
-         about tab on the navbar and once you are ready you can start with registering an account and logging in make sure you check your emails once you
-          register hope you will enjoy this site.</p>
+         <p style="font-size: 25px">Welcome to EasyBudgeting! A simple site meant to help you set up your budget plans. You can read more about it in the
+             about tab on the navbar and once you are ready you can start with registering an account and logging in. Make sure you check your emails once you
+             register, hope you will enjoy this site!</p>
      </div>
-     <div style="width: 20%;height: 100%"></div>
+     <div style="width: 20%;height: auto"></div>
  </div>
  </body>
 </html>

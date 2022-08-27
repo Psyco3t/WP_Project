@@ -16,6 +16,14 @@ $user=$_SESSION['username'];
     $table5 = "SELECT * FROM tableinfo WHERE tableName='$tablename' AND ID=5";
     $table6 = "SELECT * FROM tableinfo WHERE tableName='$tablename' AND ID=6";*/
 
+$checkUser="SELECT EXISTS
+(SELECT * FROM tablename WHERE budgetTableName='$tablename' AND username='$user') as output;";
+$arrayKey=mysqli_query($link,$checkUser);
+$result=mysqli_fetch_array($arrayKey);
+
+$checkWish="SELECT * FROM wishlist WHERE TableName='$tablename'";
+$query=$link->query($checkWish);
+
 $table = "
 SELECT * FROM tablename 
 INNER JOIN jointable
@@ -152,7 +160,7 @@ $fetch6=mysqli_fetch_array($selectExec6);
         <div style="width: 100%">
             <h3>Current Table: <?php echo $tablename?></h3>
         </div>
-    <div style="width: 70%;display: flex">
+    <div style="width: 85%;display: flex">
         <div style="width: 50%">
         <div class="mb-3">
             <label for="date" class="form-label">Date</label>
@@ -324,15 +332,49 @@ $fetch6=mysqli_fetch_array($selectExec6);
         <div style="margin-top: 250px;width: 30%">
             <button type="submit" class="btn btn-primary" name="SubmitBtn">Submit</button>
         </div>
-        </form>
-    <div style="margin-top: 250px;width: 40%">
+
+    </form>
+    <div style="margin-top: 250px;width: 40%;margin-left: 15px">
         <button type="button" class="btn btn-primary" name="updateBtn" onclick="calculateTotal()">Calculate</button>
     </div>
     <div style="width: 40%;margin-top: 250px">
         <a href="../HTML/sharePage.php" >Share table?</a>
     </div>
-</div>
+    <div style="width: 50%; margin-left: 50px" id="wishContainer">
+        <form method="post" action="../PHP/addWish.php">
+        <div id="wishElement">
+            <label for="wishlist" class="form-label">Wishlist</label>
+            <input type="text" class="form-control" id="wishlist" name="wishlist">
+            <label for="text" class="form-label">Budget</label>
+            <input type="text" class="form-control" id="text" name="text">
+        </div>
+        <div style="height: auto; margin-top: 15px">
+        <button type="submit" class="btn btn-secondary" name="addElement" style="height: 15%" id="addWish">Add Wish</button>
+        </div>
+        </form>
     </div>
+</div>
+        <div style="width: 20%; margin-left: 15px">
+            <table class="table" <?php if($result['output']==1){
+
+                echo 'style="display:block;"'; }
+            else{
+                echo 'style="display:none;"';}?>>
+                <tr>
+                    <th>Request</th>
+                    <th>BudgetRequest</th>
+                </tr>
+                <?php while($wish=$query->fetch_assoc())
+                { ?>
+                    <tr>
+                        <td><?php echo $wish['text'] ." ";?> </td>
+                        <td><?php echo $wish['budget']. " ";?> </td>
+                    </tr>
+                <?php }?>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript" src="../javaCode/functions.js"></script>
 </body>
 </html>
 <?php /*endwhile;*/ ?>

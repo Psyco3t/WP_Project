@@ -21,17 +21,17 @@
         </div>
         <nav style="display: flex; align-items: center; float: right; width: auto">
             <ul style="display: flex; list-style-type: none; margin: 0 auto; gap: 2rem; flex-wrap: wrap">
-                <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: 10%">
-                    <a href="index.php" style="text-decoration: none">Home</a>
+                <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: auto">
+                    <a href="../HTML/index.php" style="text-decoration: none">Home</a>
                 </li>
-                <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: 10%">
-                    <a href="#" style="text-decoration: none;">About</a>
+                <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: auto">
+                    <a href="../HTML/aboutPage.php" style="text-decoration: none;">About</a>
                 </li>
                 <!---<li style="text-transform: uppercase; font-weight: bold; margin: auto;">
                  <a href="#" style="text-decoration: none">Users</a>
                 </li>---->
                 <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: auto">
-                    <a href="loginPage.php"<?php if(isset($_SESSION['logged_in'])  && $_SESSION['logged_in'] == true){
+                    <a href="../HTML/loginPage.php"<?php if(isset($_SESSION['logged_in'])  && $_SESSION['logged_in'] == true){
 
                         echo 'style="display:none;"'; }
                     else{
@@ -41,7 +41,7 @@
 
                 </li>
                 <li id="register" style="text-transform: uppercase; font-weight: bold; margin: auto; width: auto">
-                    <a href="registerPage.php" <?php if(isset($_SESSION['logged_in'])  && $_SESSION['logged_in'] == true){
+                    <a href="../HTMLregisterPage.php" <?php if(isset($_SESSION['logged_in'])  && $_SESSION['logged_in'] == true){
 
                         echo 'style="display:none;"'; }
                     else{

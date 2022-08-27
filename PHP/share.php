@@ -31,7 +31,7 @@ VALUES ('$idArray','$getSql1'),('$idArray','$getSql2'),('$idArray','$getSql3'),(
     mysqli_query($link, $setJointable);
 
     $email = $_SESSION['email'];
-    shareMail($email);
+    shareMail($email,$tableName);
     //echo "success";
 }
 

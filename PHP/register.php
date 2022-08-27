@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include '../javaCode/functions.js';
+//include '../javaCode/functions.js';
 require_once "config.php";
 require "functions_def.php";
 

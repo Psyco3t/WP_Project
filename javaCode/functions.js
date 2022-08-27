@@ -1,4 +1,6 @@
 window.addEventListener('load', init);
+//document.getElementById("addWish").addEventListener("click",addElement);
+var count=1;
 
 function checkSelect()
 {
@@ -137,7 +139,8 @@ function onRegisterSubmit()
         document.getElementById("registerUsername").style.border = "thin solid red";
     }
 
-    if(password.length<=8)
+    if(password.length<8)
+    if(password.length<8)
     {
         form.addEventListener('submit', function (e) {
             // prevent the form from submitting
@@ -171,6 +174,22 @@ function onRegisterSubmit()
         //borders.style.border="2px solid red";
         document.getElementById("registerPasswordConfirm").style.border = "thin solid red";
     }
+}
+
+function addElement()
+{
+    var newElement=document.createElement('input');
+    newElement.type="text";
+    newElement.style.marginTop="15px";
+    newElement.style.width="100%";
+    newElement.className="form-control"
+    var element=document.getElementById('wishDiv');
+    newElement.appendChild(element);
+    count++;
+    newElement.id="wishlist"+count;
+    document.getElementById('wishContainer').appendChild(newElement);
+
+
 }
 
 function init() {
