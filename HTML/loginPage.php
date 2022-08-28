@@ -1,23 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head style="height: 100%">
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script type="text/javascript" src="../javaCode/functions.js"></script>
-
-</head>
-<body>
-<!DOCTYPE html>
-<html>
+<html style="height: 100%">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>EasyBudgeting</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../javaCode/functions.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor">
 </head>
 <body style="height: 100%">
@@ -33,10 +22,10 @@
         <nav style="display: flex; align-items: center; float: right; width: auto">
             <ul style="display: flex; list-style-type: none; margin: 0 auto; gap: 2rem; flex-wrap: wrap">
                 <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: 10%">
-                    <a href="index.php" style="text-decoration: none">Home</a>
+                    <a href="../HTML/index.php" style="text-decoration: none">Home</a>
                 </li>
                 <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: 10%">
-                    <a href="#" style="text-decoration: none;">About</a>
+                    <a href="../HTML/aboutPage.php" style="text-decoration: none;">About</a>
                 </li>
                 <!---<li style="text-transform: uppercase; font-weight: bold; margin: auto;">
                  <a href="#" style="text-decoration: none">Users</a>
@@ -103,6 +92,7 @@
                        name="password">
             </div>
             <input type="hidden" name="action" value="login">
+            <br>
             <button type="submit" class="btn btn-primary" onsubmit="loginSuccess()" onclick="loginCheck()">Login</button><br>
 
             <?php
@@ -127,7 +117,7 @@
 
             <a href="#" id="fl">Forgot your password?</a>
         </form>
-        <form action="../PHP/reset.php" method="post" name="forget" id="forget" style="display:none; width: 20%;margin-left: 40%">
+        <form action="../PHP/reset.php" method="post" name="forget" id="forget" style="display:none; width: 40%;margin-left: 40%">
             <div class="form-group">
                 <label for="forgetEmail">E-mail</label>
                 <input type="email" class="form-control" id="forgetEmail" placeholder="Enter your e-mail address"

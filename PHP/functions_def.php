@@ -142,14 +142,14 @@ function createCode($length)
 function sendData($username, $email, $token)
 {
 
-    $header = "From: WEBMASTER <budgeting@gmail.com>\n";
+    $header = "From: EasyBudgeting <budgeting@gmail.com>\n";
     $header .= "X-Sender: budgeting@gmail.com\n";
     $header .= "X-Mailer: PHP/" . phpversion();
     $header .= "X-Priority: 1\n";
     $header .= "Reply-To:budgetingSupport@gmail.com\r\n";
     $header .= "Content-Type: text/html; charset=UTF-8\n";
 
-    $message = "Data:\n\n user: $username \n \n www.vts.su.ac.rs";
+    $message = "Data:\n\n user: $username \n \n www.EasyBudgeting.com";
     $message .= "\n\n to activate your account click on the link: " . SITE . "active.php?token=$token";
     $to = $email;
     $subject = "Registration at Budgeting";
@@ -193,11 +193,11 @@ function addEmailFailure($id_user_web)
 function sendPass($username, $email, $token)
 {
 
-    $header = "From: FreeBudgeting <webmaster@vts.su.ac.rs>\n";
-    $header .= "X-Sender: webmaster@vts.su.ac.rs\n";
+    $header = "From: EasyBudgeting <budgeting@gmail.com>\n";
+    $header .= "X-Sender: budgeting@gmail.com\n";
     $header .= "X-Mailer: PHP/" . phpversion();
     $header .= "X-Priority: 1\n";
-    $header .= "Reply-To:support@vts.su.ac.rs\r\n";
+    $header .= "Reply-To:budgetingSupport@gmail.com\r\n";
     $header .= "Content-Type: text/html; charset=UTF-8\n";
 
     $message = "You wanted;";
@@ -253,4 +253,28 @@ function submit($date,$desc,$budget,$total,$income,$otherIncome,$tableName,$link
     WHERE
     tableName='$tableName' AND ID='$id'";
     mysqli_query($link, $updateQuery);
+}
+
+function fetchArrayFromTableInfo($tableName,$ID,$link)
+{
+    $get1="SELECT tableID FROM tableinfo WHERE tableName='$tableName' AND ID='$ID'";
+    $getSql1=mysqli_query($link,$get1);
+    $arrayKey=mysqli_fetch_array($getSql1);
+    return $arrayKey['tableID'];
+}
+
+function shareMail($email,$table)
+{
+    $header = "From: EasyBudgeting <budgeting@gmail.com>\n";
+    $header .= "X-Sender: budgeting@gmail.com\n";
+    $header .= "X-Mailer: PHP/" . phpversion();
+    $header .= "X-Priority: 1\n";
+    $header .= "Reply-To:budgetingSupport@gmail.com\r\n";
+    $header .= "Content-Type: text/html; charset=UTF-8\n";
+
+    $message = "Hi there";
+    $message .= "\n\n someone has decided to share the ".$table." with you, check your available tables";
+    $to = $email;
+    $subject = "Password Reset";
+    return mail($to, $subject, $message, $header);
 }

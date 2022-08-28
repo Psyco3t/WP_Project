@@ -4,6 +4,11 @@ require_once '../PHP/config.php';
 require_once '../PHP/functions_def.php';
 $sql="SELECT * FROM logs";
 $ExecSql=$link->query($sql);
+$tableName="SELECT * FROM tablename";
+$tableFetch=$link->query($tableName);
+$findTable="SELECT * FROM tableinfo
+WHERE ID=1";
+$findTableExec=$link->query($findTable);
 
 ?>
 
@@ -89,7 +94,7 @@ $ExecSql=$link->query($sql);
     <div style="padding: 100px;display: flex">
         <div style="margin-left: 100px; display: flex">
             <div>
-                <table>
+                <table class="table">
                     <tr>
                     <th>User</th>
                     <th>Browser</th>
@@ -107,6 +112,39 @@ $ExecSql=$link->query($sql);
                     <?php }?>
                 </table>
             </div>
+        </div>
+        <div style="margin-left: 20px;">
+            <div>
+                <table class="table">
+                    <tr>
+                        <th>User</th>
+                        <th>TableName</th>
+                        <th>ID</th>
+                    </tr>
+                    <?php while($fetchTNames=$tableFetch->fetch_assoc())
+                    { ?>
+                        <tr>
+                            <td><?php echo $fetchTNames['username'] ." ";?> </td>
+                            <td><?php echo $fetchTNames['budgetTableName']. " ";?> </td>
+                            <td><?php echo $fetchTNames['id']. " ";?> </td>
+                        </tr>
+                    <?php }?>
+                </table>
+            </div>
+        </div>
+        <div style="width: auto;margin-left: 15px">
+            <form method="post" action="../PHP/adminHandle.php">
+            <p>Select table to deny</p>
+            <select class="custom-select custom-select-lg mb-3" id="select" name="tables">
+                <option selected disabled value="default">Select</option>
+                <?php while($table=mysqli_fetch_array($findTableExec)):;?>
+                    <option value="<?php echo $table['tableName']; ?>"> <?php echo $table['tableName']; ?></option>
+                    <?php $_SESSION['adminTable']=$table['tableName'];
+                endwhile;?>
+            </select>
+            <button type="submit" class="btn btn-secondary" name="denyBtn" value="Deny">Deny</button>
+                <button type="submit" class="btn btn-secondary" name="allowBtn" value="Allow">Allow</button>
+            </form>
         </div>
     </div>
 </div>

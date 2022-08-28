@@ -1,4 +1,6 @@
 window.addEventListener('load', init);
+//document.getElementById("addWish").addEventListener("click",addElement);
+var count=1;
 
 function checkSelect()
 {
@@ -111,8 +113,125 @@ function calculateTotal()
 
 }
 
-function registerCheck()
+
+function onRegisterSubmit()
 {
+    var username=document.getElementById("registerUsername").value;
+    var password=document.getElementById("registerPassword").value;
+    var passwordConfirm=document.getElementById("registerPasswordConfirm").value;
+    var form=document.getElementById('registerForm');
+
+
+    if(username.length>0)
+    {
+        document.getElementById('1').innerHTML="";
+        document.getElementById("registerUsername").style.border = "";
+    }
+    else
+    {
+        form.addEventListener('submit', function (e) {
+            // prevent the form from submitting
+            e.preventDefault();
+
+        });
+        document.getElementById('1').innerHTML="Please enter a username";
+        //borders.style.border="red solid 2px";
+        document.getElementById("registerUsername").style.border = "thin solid red";
+    }
+
+    if(password.length<8)
+    if(password.length<8)
+    {
+        form.addEventListener('submit', function (e) {
+            // prevent the form from submitting
+            e.preventDefault();
+
+        });
+        document.getElementById('2').innerHTML="Please enter a password!";
+        //borders.style.border="2px solid red";
+        document.getElementById("registerPassword").style.border = "thin solid red";
+    }
+    else
+    {
+        document.getElementById('2').innerHTML="";
+        document.getElementById("registerPassword").style.border = "";
+    }
+
+    if(passwordConfirm===password)
+    {
+        document.getElementById('3').innerHTML="";
+        document.getElementById("registerPasswordConfirm").style.border = "";
+    }
+
+    else
+    {
+        form.addEventListener('submit', function (e) {
+            // prevent the form from submitting
+            e.preventDefault();
+
+        });
+        document.getElementById('3').innerHTML="Password does not match";
+        //borders.style.border="2px solid red";
+        document.getElementById("registerPasswordConfirm").style.border = "thin solid red";
+    }
+}
+
+function addElement()
+{
+    var newElement=document.createElement('input');
+    newElement.type="text";
+    newElement.style.marginTop="15px";
+    newElement.style.width="100%";
+    newElement.className="form-control"
+    var element=document.getElementById('wishDiv');
+    newElement.appendChild(element);
+    count++;
+    newElement.id="wishlist"+count;
+    document.getElementById('wishContainer').appendChild(newElement);
+
+
+}
+
+function highlight()
+{
+    var input1=document.getElementById("total");
+    var input2=document.getElementById("total2");
+    var input3=document.getElementById("total3");
+    var input4=document.getElementById("total4");
+    var input5=document.getElementById("total5");
+    var input6=document.getElementById("total6");
+
+    var compare1;
+    var compare2;
+    var compare3;
+
+    if(input1.value>input2.value)
+    {
+        input1.style.color="red";
+    }
+    else if(input2.value>input1.value)
+    {
+        input2.style.color="red";
+    }
+
+    if(input3.value>input4.value)
+    {
+        input3.style.color="red";
+    }
+    else if(input4.value>input3.value)
+    {
+        input4.style.color="red";
+    }
+
+    if(input5.value>input6.value)
+    {
+        input5.style.color="red";
+    }
+    else if(input6.value>input5.value)
+    {
+        input6.style.color="red";
+    }
+
 
 }
 

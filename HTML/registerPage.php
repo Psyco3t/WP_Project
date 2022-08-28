@@ -21,17 +21,17 @@
         </div>
         <nav style="display: flex; align-items: center; float: right; width: auto">
             <ul style="display: flex; list-style-type: none; margin: 0 auto; gap: 2rem; flex-wrap: wrap">
-                <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: 10%">
-                    <a href="index.php" style="text-decoration: none">Home</a>
+                <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: auto">
+                    <a href="../HTML/index.php" style="text-decoration: none">Home</a>
                 </li>
-                <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: 10%">
-                    <a href="#" style="text-decoration: none;">About</a>
+                <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: auto">
+                    <a href="../HTML/aboutPage.php" style="text-decoration: none;">About</a>
                 </li>
                 <!---<li style="text-transform: uppercase; font-weight: bold; margin: auto;">
                  <a href="#" style="text-decoration: none">Users</a>
                 </li>---->
                 <li style="text-transform: uppercase; font-weight: bold; margin: auto; width: auto">
-                    <a href="loginPage.php"<?php if(isset($_SESSION['logged_in'])  && $_SESSION['logged_in'] == true){
+                    <a href="../HTML/loginPage.php"<?php if(isset($_SESSION['logged_in'])  && $_SESSION['logged_in'] == true){
 
                         echo 'style="display:none;"'; }
                     else{
@@ -41,7 +41,7 @@
 
                 </li>
                 <li id="register" style="text-transform: uppercase; font-weight: bold; margin: auto; width: auto">
-                    <a href="registerPage.php" <?php if(isset($_SESSION['logged_in'])  && $_SESSION['logged_in'] == true){
+                    <a href="../HTMLregisterPage.php" <?php if(isset($_SESSION['logged_in'])  && $_SESSION['logged_in'] == true){
 
                         echo 'style="display:none;"'; }
                     else{
@@ -83,11 +83,13 @@
             <div class="row m-2">
                 <div class="col p-3">
                     <h1>Register</h1>
-                    <form action="../PHP/register.php" method="post" style="margin: 50px">
+                    <form action="../PHP/register.php" method="post" style="margin: 50px" id="registerForm">
                         <div class="form-group">
                             <label for="registerUsername">Username</label>
                             <input type="text" class="form-control" id="registerUsername"
                                    placeholder="Enter username" name="username">
+                            <br>
+                            <p id="1" style="color: red"></p>
                         </div>
 
 
@@ -101,15 +103,18 @@
                             <label for="registerPassword">Password</label>
                             <input type="password" class="form-control" name="password" id="registerPassword" placeholder="Password (min 8 characters)">
                         </div>
+                        <br>
+                        <p id="2" style="color: red"></p>
 
                         <div class="form-group">
                             <label for="registerPasswordConfirm">Password confirm</label>
                             <input type="password" class="form-control" name="passwordConfirm" id="registerPasswordConfirm" placeholder="Password again">
                         </div>
                         <br>
+                        <p id="3" style="color: red"></p>
 
                         <input type="hidden" name="action" value="register">
-                        <button type="submit" class="btn btn-primary">Register</button>
+                        <button type="submit" class="btn btn-primary" onclick="onRegisterSubmit()">Register</button>
 
                         <?php
                         require '../PHP/config.php';
@@ -137,5 +142,5 @@
     </div>
     <div style="width: 30%"></div>
 </div>
-</body>
+</body <script type="text/javascript" src="../javaCode/functions.js"></script>>
 </html>

@@ -4,13 +4,19 @@ require_once '../PHP/config.php';
 require_once '../PHP/functions_def.php';
 $user=$_SESSION['username'];
 
-$selectQuery="SELECT * FROM tablename WHERE username='$user'";
+//$selectQuery="SELECT * FROM tablename WHERE username='$user'";
+$selectQuery="
+SELECT * FROM tablename 
+INNER JOIN jointable
+ON tablename.id=jointable.UID
+INNER JOIN tableinfo
+ON jointable.TableID=tableinfo.tableID and tableinfo.ID=1 AND(tablename.username='$user') and tableinfo.active=1;";
 
 $selectExec=mysqli_query($link,$selectQuery);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html style="height: 100%">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +26,7 @@ $selectExec=mysqli_query($link,$selectQuery);
     <script type="text/javascript" src="../javaCode/functions.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor">
 </head>
-<body>
+<body style="height: 100%">
 <div style="width: available">
     <div style="height: 150px; background-color: brown; width: auto">
     </div>
@@ -88,7 +94,7 @@ $selectExec=mysqli_query($link,$selectQuery);
     </div>
 </div>
 
-<div style="display: flex" class="col bg-light p-3">
+<div style="display: flex;height: 100%" class="col bg-light p-3">
     <div style="width: 20%"></div>
     <div style="width: 60%">
         <div>
@@ -98,8 +104,8 @@ $selectExec=mysqli_query($link,$selectQuery);
                     <select class="custom-select custom-select-lg mb-3" id="select" name="tables">
                         <option selected disabled value="default">Select</option>
                         <?php while($table=mysqli_fetch_array($selectExec)):;?>
-                            <option value="<?php echo $table['budgetTableName']; ?>"> <?php echo $table['budgetTableName']; ?></option>
-                            <?php $_SESSION['selectedTable']=$table['budgetTableName'];
+                            <option value="<?php echo $table['tableName']; ?>"> <?php echo $table['tableName']; ?></option>
+                            <?php $_SESSION['selectedTable']=$table['tableName'];
                         endwhile;?>
                     </select>
                     <p id="1" style="color: red"></p>
@@ -112,6 +118,7 @@ $selectExec=mysqli_query($link,$selectQuery);
                 </div>
                 <br>
                 <button type="submit" class="btn btn-secondary" name="deleteBtn" value="Delete">Delete</button>
+                <button type="submit" class="btn btn-secondary" name="removeBtn" value="remove">Remove Shared table</button>
                 <button type="submit" class="btn btn-primary" style="margin-left: 50px" name="continueBtn" onclick="checkSelect();" value="Continue">Continue</button>
                 <button type="submit" class="btn btn-primary" name="createBtn" onclick="checkName()" value="Create">Create</button>
             </form>

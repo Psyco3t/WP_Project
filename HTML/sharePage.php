@@ -1,18 +1,26 @@
 <?php
 session_start();
+require_once '../PHP/config.php';
+require_once '../PHP/functions_def.php';
+$user=$_SESSION['username'];
+
+$selectQuery="SELECT * FROM users WHERE username!='$user'";
+
+$selectExec=mysqli_query($link,$selectQuery);
 ?>
 
 <!DOCTYPE html>
-<html style="height: 100%; width: auto">
+<html style="height: 100%">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>EasyBudgeting</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../javaCode/functions.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor">
 </head>
-<body style="height: 100%; width: 100%">
+<body style="height: 100%">
 <div style="width: available">
     <div style="height: 150px; background-color: brown; width: auto">
     </div>
@@ -79,22 +87,28 @@ session_start();
         </nav>
     </div>
 </div>
-<div style="flex: auto; display: flex;height: auto; background-image: url('../resources/BudgetOpaque.png');background-size: 100% " id="ImageDiv">
-    <div style="width: 20%;height: 100%"></div>
-    <div style="width: 60%; padding: 100px;height: 100%; background-color: darkgray; opacity: 90%">
-        <H2 style="text-align: center">So you want to register?</H2>
-        <p style="font-size: 25px">Assuming you didn't read the home page, first you must create an account. Register by providing your username, a valid e-mail and a password.
-            After that check your e-mails because we sent an activation code to you. All you have to do is click the link or copy it into your browser,
-            aaaand you are done!</p>
-        <H2 style="text-align: center">Okay, I registered what now?</H2>
-        <p style="font-size: 25px">
-            So now that you have an account, log in if you haven't already.
-            After that go ahead and click on the Select/Create Table button. Here you will have to create a table and then select it, or maybe
-            you have already been thrown to the budget table page. Here you can edit and set your income and budget plans. It's recommended to categorize
-            your budget tables, so each table consists of 6 data tables. And that is basically it.
-        </p>
+
+<div style="display: flex;height: 100%" class="col bg-light p-3">
+    <div style="width: 20%"></div>
+    <div style="width: 60%">
+        <div>
+            <form action="../PHP/share.php" method="post" style="width: auto;height: 100%" id="selectForm">
+                <h1>Select a user to share with</h1>
+                <div class="form-group" style="margin: auto">
+                    <select class="custom-select custom-select-lg mb-3" id="select" name="tables">
+                        <option selected disabled value="default">Select</option>
+                        <?php while($table=mysqli_fetch_array($selectExec)):;?>
+                            <option value="<?php echo $table['username']; ?>"> <?php echo $table['username']; ?></option>
+                            <?php $_SESSION['tableOwner']=$table['username'];
+                        endwhile;?>
+                    </select>
+                    <p id="1" style="color: red"></p>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary" name="createBtn" onclick="" value="Create">Share</button>
+            </form>
+        </div>
+        <div style="width: 20%"></div>
     </div>
-    <div style="width: 20%;height: 100%"></div>
-</div>
 </body>
 </html>

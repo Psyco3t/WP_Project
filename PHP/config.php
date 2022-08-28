@@ -2,9 +2,9 @@
 //define stuff
 define("SITE", "http://localhost/WP_Project/HTML/");
 define ('DB_Server','localhost');
-define ('db_Username','root');
-define ('db_Password','');
-define ('db_Name','budgetdb');
+define ('db_Username','fulcrum');
+define ('db_Password','d87wJBYTpWnQN1m');
+define ('db_Name','fulcrum');
 
 $link=mysqli_connect(DB_Server,db_Username,db_Password,db_Name);//attempt connection
 if($link===false) //checks connection

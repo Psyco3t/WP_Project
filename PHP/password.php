@@ -26,7 +26,7 @@ WHERE email='$email'";
 mysqli_query($link,$sqlQuery);
 
 if (!empty($resetToken) AND strlen($resetToken) === 60) {
-    $sql = "UPDATE users_web SET  resetToken='$resetToken'
+    $sql = "UPDATE users SET  resetToken='$resetToken'
             WHERE  binary resetToken = '$resetToken'";
 
     $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
